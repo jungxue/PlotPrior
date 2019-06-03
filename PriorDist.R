@@ -1,14 +1,11 @@
 
+# setwd("H:/Desktop/7.1 No time to waste/Stats 798A Research Master/R-codes/JAGS")
 
-require("rmutil")
-require("ggplot2")
-require("pdp")
+packages=c("rmutil","ggplot2","pdp")
+require(packages)
+library(packages)
 
-library("rmutil")
-library("ggplot2")
-library("pdp")
-
-###------------------------create prior with priors-------------------------------#
+###------------------------create prior with hyper priors-------------------------------#
 
 N<-10000
 
@@ -56,7 +53,7 @@ any(y4<0)
 plot(density(y4))
 
 
-### laplace 1 1priorrlaplace(n, m=0, s=1)-------
+### laplace(1,1) prior-----------------------
 
 mean.y5 <- rnorm(N,1,0.1)
 scale.y5 <- rnorm(N,1,0.1)
@@ -68,7 +65,7 @@ any(y5<0)
 plot(density(y5))
 
 
-### mixture model
+### mixture model----------------------------
 
 spike<-rbinom(N,1,0.5)
 
@@ -126,6 +123,13 @@ p6 <- ggplot(y6.df, aes(x=y6)) +
 
 
 ### NA Values??
+
+which(is.na(y1))
+which(is.na(y2))
+which(is.na(y3))
+which(is.na(y4))
+which(is.na(y5))
+which(is.na(y6))
 
 pdf("plots/priordist.PDF")
 
