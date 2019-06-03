@@ -1,5 +1,13 @@
 
 
+require("rmutil")
+require("ggplot2")
+require("pdp")
+
+library("rmutil")
+library("ggplot2")
+library("pdp")
+
 ###------------------------create prior with priors-------------------------------#
 
 N<-10000
