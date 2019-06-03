@@ -1,5 +1,5 @@
 # PlotPrior
 Plot the prior your Bayesian models from using density and ggplot
 
-![priordist](priordist.jpeg)
+![priordist](priordist.PDF)
 
