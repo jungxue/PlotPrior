@@ -143,7 +143,16 @@ grid.arrange(p1 + ggtitle("model 1: Null prior"),
              p6 + ggtitle("model 6: 0.1 Mixture prior"),ncol=2)
 
 
-pdf("plots/priordist.jpeg")
+png("plots/priordist.png")
+grid.arrange(p1 + ggtitle("model 1: Null prior"), 
+             p2 + ggtitle("model 2: Normal(1,0.3) prior"), 
+             p3 + ggtitle("model 3: Normal(1,0.1) prior"),
+             p4 + ggtitle("model 4: Gamma(4,3) prior"),
+             p5 + ggtitle("model 5: Laplace(1,1) prior"),
+             p6 + ggtitle("model 6: 0.5 Mixture prior"),ncol=2)
+dev.off()
+
+pdf("plots/priordist.PDF")
 grid.arrange(p1 + ggtitle("model 1: Null prior"), 
              p2 + ggtitle("model 2: Normal(1,0.3) prior"), 
              p3 + ggtitle("model 3: Normal(1,0.1) prior"),
