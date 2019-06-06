@@ -5,3 +5,4 @@ Plot the prior (with hyper-prior) of your Bayesian models from using density and
     <a href="priordist.PDF">PDF</a> 
 </object>
 
+![](priordist.png)
