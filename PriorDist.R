@@ -67,18 +67,20 @@ plot(density(y5))
 
 ### mixture model----------------------------
 
-spike<-rbinom(N,1,0.5)
+spike<-rbinom(N,1,0.9)
 
 mu2.y6 = rnorm(N,1,0.1)   
-sigma2.y6 = rnorm(N,0.3,0.1)
+sigma2.y6 = rnorm(N,1,0.1)
 slab <- rnorm(N, mu2.y6, sqrt(sigma2.y6))
 
-y6<-spike+(1-spike)*slab
+y6 <- rnorm(N, spike*1+(1-spike)*slab, .1)
 y6 <- y6[-which(y6<0)]
 y6.df = data.frame(y6)
 
 any(y6<0)
 plot(density(y6))
+hist(y6)
+
 
 
 
@@ -114,8 +116,8 @@ p5 <- ggplot(y5.df, aes(x=y5)) +
       geom_vline(xintercept = 1, linetype="dashed", color = "red", size=0.5)
 
 p6 <- ggplot(y6.df, aes(x=y6)) +   
-      geom_histogram(binwidth=.1,aes(y=..density..),color="dark grey",fill="light blue") + 
-      geom_density(aes(y=..density..),alpha=.2, fill="light blue")+scale_x_continuous(limits = c(0, 2))+
+      geom_histogram(binwidth=0.1,aes(y=..density..),color="dark grey",fill="light blue") + 
+      geom_density(aes(y=..density..),alpha=.2, fill="light blue")+scale_x_continuous(limits = c(0, 5))+
       geom_vline(xintercept = 1, linetype="dashed", color = "red", size=0.5)
 
 # require("gridExtra")
@@ -131,15 +133,15 @@ which(is.na(y4))
 which(is.na(y5))
 which(is.na(y6))
 
-pdf("plots/priordist.PDF")
+
 
 grid.arrange(p1 + ggtitle("model 1: Null prior"), 
              p2 + ggtitle("model 2: Normal(1,0.3) prior"), 
              p3 + ggtitle("model 3: Normal(1,0.1) prior"),
              p4 + ggtitle("model 4: Gamma(4,3) prior"),
              p5 + ggtitle("model 5: Laplace(1,1) prior"),
-             p6 + ggtitle("model 6: 0.5 Mixture prior"),ncol=2)
-dev.off()
+             p6 + ggtitle("model 6: 0.1 Mixture prior"),ncol=2)
+
 
 pdf("plots/priordist.jpeg")
 grid.arrange(p1 + ggtitle("model 1: Null prior"), 
